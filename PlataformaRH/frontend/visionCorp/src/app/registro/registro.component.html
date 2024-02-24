@@ -1,0 +1,33 @@
+<h2 class="text-center">Registro</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="angForm" (ngSubmit)="AngularData(angForm)">
+          <div class="mb-3">
+            <label for="NombreUsuario" class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" formControlName="NombreUsuario" required>
+            <div *ngIf="angForm.get('NombreUsuario')?.invalid && (angForm.get('NombreUsuario')?.dirty || angForm.get('NombreUsuario')?.touched)" class="alert alert-danger">
+              <div *ngIf="angForm.get('NombreUsuario')?.errors?.['required']">El nombre de usuario es obligatorio.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" formControlName="correoElectronico" required>
+            <div *ngIf="angForm.get('correoElectronico')?.invalid && (angForm.get('correoElectronico')?.dirty || angForm.get('correoElectronico')?.touched)" class="alert alert-danger">
+              <div *ngIf="angForm.get('correoElectronico')?.errors?.['pattern']">El correo electrónico no es válido.</div>
+              <div *ngIf="angForm.get('correoElectronico')?.errors?.['required']">El correo electrónico es obligatorio.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Contraseña</label>
+            <input type="Password" class="form-control" id="Password" name="Password" formControlName="Password" required>
+            <div div *ngIf="angForm.get('Password')?.invalid && (angForm.get('Password')?.dirty || angForm.get('Password')?.touched)" class="alert alert-danger">
+              <div *ngIf="angForm.get('Password')?.errors?.['required']">La contraseña es obligatoria</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
