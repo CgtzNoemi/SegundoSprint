@@ -11,9 +11,11 @@ export class ApiService {
     dbUrl: string = "http://localhost/PlataformaRH/backend/";
     constructor(private httpClient: HttpClient) {}
 
-    public userRegistro(NombreUsuario: any, correoElectronico: any, Password: any) {
+    public userRegistro(NombreUsuario: any, correoElectronico: any, Password: any, ClaveDeRegistro: any) {
+        console.log(NombreUsuario);
         return this.httpClient.post<any>(this.dbUrl + '/registro.php', {
-            NombreUsuario, correoElectronico, Password
+            NombreUsuario, correoElectronico, Password, ClaveDeRegistro
+           
         }).pipe(map(Users => {
             return Users;
         }));
@@ -24,7 +26,6 @@ export class ApiService {
             correoElectronico, Password
         }).pipe(map(Users => {
             this.setToken(Users.token);
-            //this.getLoggedInName.emit(true);
             return Users;
         }));
     }

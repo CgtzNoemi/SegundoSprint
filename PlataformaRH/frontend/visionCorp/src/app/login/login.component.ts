@@ -17,8 +17,8 @@ export class LoginComponent {
     private router:Router
     ){
       this.angForm = this.fb.group({
-        correoElectronico: ['', Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
-        Password: ['', Validators.required]
+        correoElectronico: ['', [Validators.required, Validators.email]],
+        Password: ['', [Validators.required, Validators.pattern(StrongPasswordRegx)]],
       });
     }
 
@@ -51,5 +51,6 @@ export class LoginComponent {
       
     }
 }
+export const StrongPasswordRegx: RegExp = /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
   
 
